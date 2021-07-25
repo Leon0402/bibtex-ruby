@@ -41,7 +41,8 @@ module BibTeX
   #
   @log = Logger.new(STDERR)
   @log.level = ENV.key?('DEBUG') ? Logger::DEBUG : Logger::WARN
-  @log.datetime_format = '%Y-%m-%d %H:%M:%S'
+  # Remove for now
+  # @log.datetime_format = '%Y-%m-%d %H:%M:%S'
 
   class << self
     attr_accessor :log
