@@ -302,22 +302,6 @@ module BibTeX
     def to_hash(_options = {})
       { string: { @key => @value.to_s(quotes: '"') } }
     end
-
-    def to_xml(_options = {})
-      require 'rexml/document'
-
-      xml = REXML::Element.new(:string)
-
-      k = REXML::Element.new(:key)
-      v = REXML::Element.new(:value)
-      k.text = key.to_s
-      v.text = value.to_s(quotes: '"')
-
-      xml.add_elements(k)
-      xml.add_elements(v)
-
-      xml
-    end
   end
 
   #
