@@ -25,12 +25,9 @@ module BibTeX
     alias << apply
   end
 
-  module Filters
-    LOAD_PATH = [File.expand_path(__dir__), 'filters'].join('/').freeze
-
-    Dir.glob("#{LOAD_PATH}/*.rb").sort.each do |filter|
-      require filter
-    end
+  module Filters    
+    require_relative 'filters/latex'
+    require_relative 'filters/linebreaks'
 
     def self.resolve!(filter)
       resolve(filter) || raise(ArgumentError, "Failed to load filter #{filter.inspect}")
