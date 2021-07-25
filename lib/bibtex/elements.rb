@@ -163,13 +163,6 @@ module BibTeX
       ::JSON.dump(to_hash(options))
     end
 
-    def to_xml(_options = {})
-      require 'rexml/document'
-      xml = REXML::Element.new(type)
-      xml.text = content
-      xml
-    end
-
     # Called when the element was added to a bibliography.
     def added_to_bibliography(bibliography)
       # raise BibTeXError, "failed to add element to Bibliography: already registered with another Bibliography" unless @bibliography.nil?
