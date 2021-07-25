@@ -407,23 +407,6 @@ module BibTeX
       q('@entry').map { |o| o.to_citeproc(options) }
     end
 
-    # Returns a REXML::Document representation of the bibliography using the
-    # BibTeXML format.
-    def to_xml(options = {})
-      require 'rexml/document'
-
-      xml =  REXML::Document.new
-      xml << REXML::XMLDecl.new('1.0', 'UTF-8')
-
-      root = REXML::Element.new('bibtex:file')
-      root.add_namespace('bibtex', 'http://bibtexml.sf.net/')
-
-      each { |e| root.add_element(e.to_xml(options)) if e.is_a?(Entry) }
-
-      xml.add_element(root)
-      xml
-    end
-
     # Returns an RDF::Graph representation of the bibliography. The graph
     # can be serialized using any of the RDF serializer plugins.
     def to_rdf(_options = {})
