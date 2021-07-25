@@ -69,11 +69,3 @@ require 'bibtex/error'
 require 'bibtex/parser'
 require 'bibtex/bibliography'
 require 'bibtex/utilities'
-
-begin
-  require 'rdf'
-  require 'bibtex/entry/rdf_converter'
-  require 'bibtex/bibliography/rdf_converter'
-rescue LoadError
-  # ignored
-end
