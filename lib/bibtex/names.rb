@@ -249,21 +249,6 @@ module BibTeX
       Hash[each_pair.to_a]
     end
 
-    def to_xml
-      require 'rexml/document'
-      xml = REXML::Element.new('bibtex:person')
-
-      each_pair do |part, text|
-        next if text.nil?
-
-        element = REXML::Element.new("bibtex:#{BibTeXML[part]}")
-        element.text = text
-        xml.add_element(element)
-      end
-
-      xml
-    end
-
     %i[strip! upcase! downcase! sub! gsub! chop! chomp! rstrip!].each do |method_id|
       define_method(method_id) do |*arguments, &block|
         each do |part|
