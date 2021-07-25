@@ -71,12 +71,6 @@ require 'bibtex/bibliography'
 require 'bibtex/utilities'
 
 begin
-  require 'bibtex/entry/bibtexml_converter'
-rescue LoadError
-  # ignored
-end
-
-begin
   require 'rdf'
   require 'bibtex/entry/rdf_converter'
   require 'bibtex/bibliography/rdf_converter'
