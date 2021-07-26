@@ -57,7 +57,7 @@ require 'bibtex/extensions'
 
 require 'bibtex/value'
 require 'bibtex/filters'
-# require 'bibtex/name_parser'
+require 'bibtex/name_parser'
 
 require 'bibtex/compatibility'
 
