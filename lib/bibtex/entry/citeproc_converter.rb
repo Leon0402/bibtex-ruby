@@ -1,5 +1,5 @@
 class BibTeX::Entry::CiteProcConverter
-  CSL_FILTER = Hash.new { |_h, k| k }.merge(Hash[*%w[
+  CSL_FILTER = Hash[%w[
     date issued
     isbn ISBN
     booktitle container-title
@@ -21,7 +21,7 @@ class BibTeX::Entry::CiteProcConverter
     howpublished publisher
     type genre
     urldate accessed
-  ].map(&:intern)]).freeze
+  ].map(&:intern).each_slice(2).to_a]
 
   CSL_FIELDS = %w[
     abstract annote archive archive_location archive-place
