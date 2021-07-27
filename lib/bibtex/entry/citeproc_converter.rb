@@ -1,27 +1,30 @@
 class BibTeX::Entry::CiteProcConverter
-  CSL_FILTER = Hash[%w[
-    date issued
-    isbn ISBN
-    booktitle container-title
-    journal container-title
-    journaltitle container-title
-    series collection-title
-    address publisher-place
-    pages page
-    number issue
-    url URL
-    doi DOI
-    pmid PMID
-    pmcid PMCID
-    year issued
-    type genre
-    school publisher
-    institution publisher
-    organization publisher
-    howpublished publisher
-    type genre
-    urldate accessed
-  ].map(&:intern).each_slice(2).to_a]
+  CSL_FILTER = %w[
+      date issued
+      isbn ISBN
+      booktitle container-title
+      journal container-title
+      journaltitle container-title
+      series collection-title
+      address publisher-place
+      pages page
+      number issue
+      url URL
+      doi DOI
+      pmid PMID
+      pmcid PMCID
+      year issued
+      type genre
+      school publisher
+      institution publisher
+      organization publisher
+      howpublished publisher
+      type genre
+      urldate accessed
+    ]
+    .map(&:intern)
+    .each_slice(2)
+    .to_a.reduce({}) { |memo, element| memo[element[0]] = element[1]; memo}
 
   CSL_FIELDS = %w[
     abstract annote archive archive_location archive-place
@@ -36,7 +39,7 @@ class BibTeX::Entry::CiteProcConverter
     original-publisher original-author container-author collection-editor
   ].map(&:intern).freeze
 
-  CSL_TYPES = Hash.new { |_h, k| k }.merge(Hash[*%w[
+  CSL_TYPES = %w[
     booklet pamphlet
     conference paper-conference
     inbook chapter
@@ -49,7 +52,10 @@ class BibTeX::Entry::CiteProcConverter
     techreport report
     unpublished manuscript
     article article-journal
-  ].map(&:intern)]).freeze
+  ]
+  .map(&:intern)
+  .each_slice(2)
+  .to_a.reduce({}) { |memo, element| memo[element[0]] = element[1]; memo}
 
   def self.convert(bibtex, options = {})
     new(bibtex, options).convert!
