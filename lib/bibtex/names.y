@@ -119,8 +119,8 @@ require 'strscan'
     :space => /\s+/o,
     :comma => /,/o,
 
-    :lower => /\[\p{Ll}][\p{Ll} \p{Lu}]*/uo,
-    :upper => /\[\p{Lu}][\p{Ll}\p{Lu}.]*/uo,
+    :lower => /[\p{Ll}][\p{Ll} \p{Lu}]*/uo,
+    :upper => /[\p{Lu}][\p{Ll}\p{Lu}.]*/uo,
     :other => /[^\s,\{\}\\\p{Lu}\p{Ll}]+/uo,
     :lbrace => /\{/o,
     :rbrace => /\}/o,
