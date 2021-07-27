@@ -16,9 +16,10 @@ module BibTeX
     :and => /,?\s+and\s+/io,
     :space => /\s+/o,
     :comma => /,/o,
-    :lower => /\p{lower}[[:lower:][:upper:]]*/uo,
-    :upper => /\p{upper}[[:lower:][:upper:].]*/uo,
-    :other => /[^\s,\{\}\\[:upper:][:lower:]]+/uo,
+
+    :lower => /\[\p{Ll}][\p{Ll} \p{Lu}]*/uo,
+    :upper => /\[\p{Lu}][\p{Ll}\p{Lu}.]*/uo,
+    :other => /[^\s,\{\}\\\p{Lu}\p{Ll}]+/uo,
     :lbrace => /\{/o,
     :rbrace => /\}/o,
     :braces => /[\{\}]/o,

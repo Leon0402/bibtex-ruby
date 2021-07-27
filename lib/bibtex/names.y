@@ -118,7 +118,6 @@ require 'strscan'
     :and => /,?\s+and\s+/io,
     :space => /\s+/o,
     :comma => /,/o,
-    [\p{Ll}][\p{Ll} \p{Lu}]
 
     :lower => /\[\p{Ll}][\p{Ll} \p{Lu}]*/uo,
     :upper => /\[\p{Lu}][\p{Ll}\p{Lu}.]*/uo,
